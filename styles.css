@@ -1,0 +1,108 @@
+body {
+    background-color: #dff5fc;
+    font-family: Tahoma, sans-serif;
+    margin: 20px;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* H1 Styles */
+h1 {
+    font-size: 3em;
+    margin: 20px 20px;
+}
+#blue {
+    color: #0256aa;
+}
+.chango-bold {
+  font-family: "Chango", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* navigation bar styles */
+header {
+  position: relative;
+  z-index: 10;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    position: relative;
+    z-index: 11;
+}
+a:hover {
+    color: #0256aa;
+    text-decoration: underline;
+    cursor: pointer;
+    
+}
+
+/* Profile Picture Styles */
+.pop-out-container {
+  position: relative;
+  width: 350px;
+  height: 450px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* The animated background */
+.moving-blob {
+  position: absolute;
+  bottom: 0;
+  width: 350px;
+  height: 350px;
+  background: linear-gradient(90deg, #dff5fc, #0256aa);
+  animation: morph 8s ease-in-out infinite;
+  z-index: 1;
+  box-shadow: 0 0 50px #0256aa;
+}
+
+/* This container cuts off the bottom of the image */
+.body-clipper {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 350px; /* Matches blob height */
+  overflow: hidden; /* This hides the leaking bottom part */
+  z-index: 2;
+  /* Use the SAME animation as the blob to keep the mask synced */
+  animation: morph 8s ease-in-out infinite;
+}
+
+.person-photo {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+}
+
+/* This layer shows ONLY the head and isn't clipped */
+.head-only {
+  z-index: 3;
+  clip-path: inset(0 0 50% 0); /* Only shows the top half of the photo */
+}
+
+@keyframes morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+}
+
+/* Name Styles */
+.name h2, .name h3 {
+  color:#333;
+  text-align: center;
