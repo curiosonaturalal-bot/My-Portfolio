@@ -140,10 +140,6 @@ footer {
     margin-top: -20px;
 }
 
-.side-icon {
-  display: none
-}
-
 /* Side Icons Styles */
 @media (min-width: 768px) {
     body {
@@ -206,3 +202,4 @@ footer {
         transform: translateY(-50%) translateX(0px);
     }
 }
+
