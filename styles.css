@@ -1,3 +1,8 @@
+/* General Styles */
+.side-icon {
+    display: none;
+}
+
 body {
     background-color: #dff5fc;
     font-family: Tahoma, sans-serif;
@@ -7,10 +12,10 @@ body {
         "header"
         "main"
         "footer";
-        grid-template-columns: 1fr
-        grid-template-rows: auto 1fr auto;
-        height: 100vh;
-        place-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+    place-items: center;
 }
 
 /* H1 Styles */
@@ -131,7 +136,73 @@ footer {
 
 #title {
     font-weight: normal;
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin-top: -20px;
 }
 
+.side-icon {
+  display: none
+}
+
+/* Side Icons Styles */
+@media (min-width: 768px) {
+    body {
+        /* Adjusted grid to handle the icons properly */
+        grid-template-areas: 
+            "header header header"
+            ". main ." 
+            "footer footer footer";
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+    
+    h1 {
+        font-size: 4em;
+    }
+    
+    nav ul {
+        justify-content: center;
+        gap: 50px;
+    }
+
+    .side-icon {
+        display: block;
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 170px; /* Made them a bit bigger for desktop */
+        opacity: 0.2;
+        transition: opacity 0.3s ease;
+        z-index: 1; /* Changed to 1 so they are visible over the background */
+        animation: float 4s ease-in-out infinite;
+    }
+
+    .side-icon img {
+        width: 100%; /* Ensures the image fills the 120px container */
+        height: auto;
+    }
+
+    .side-icon:hover {
+        opacity: 0.8;
+    }
+
+    .left-icon {
+        left: 5%; /* Using % keeps them spaced nicely from the edge */
+    }
+
+    .right-icon {
+        right: 5%;
+        animation-delay: 2s; /* Offset the animation for variety */
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(-50%) translateX(0px);
+    }
+    50% {
+        transform: translateY(-60%) translateX(10px); /* Moves up and slightly right */
+    }
+    100% {
+        transform: translateY(-50%) translateX(0px);
+    }
+}
