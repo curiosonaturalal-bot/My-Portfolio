@@ -72,19 +72,24 @@ main {
 /* Profile Picture Styles */
 .pop-out-container {
   position: relative;
-  width: 350px;
-  height: 450px;
+  /* Use a percentage or viewport width for scaling */
+  width: 90vw; 
+  /* Cap it so it doesn't get giant on monitors */
+  max-width: 350px; 
+  /* Maintain the aspect ratio (450/350 = 1.28) */
+  aspect-ratio: 350 / 450; 
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  margin: 0 auto;
 }
 
 /* The animated background */
 .moving-blob {
   position: absolute;
   bottom: 0;
-  width: 350px;
-  height: 350px;
+  width: 100%; /* Scales with the container */
+  aspect-ratio: 1 / 1; /* Keeps it a square/circle */
   background: linear-gradient(90deg, #dff5fc, #0256aa);
   animation: morph 8s ease-in-out infinite;
   z-index: 1;
@@ -92,14 +97,14 @@ main {
 }
 
 /* This container cuts off the bottom of the image */
+/* Updated clipper to match the relative sizing */
 .body-clipper {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 350px; /* Matches blob height */
-  overflow: hidden; /* This hides the leaking bottom part */
+  height: 77%; /* This matches the 350px blob height vs 450px container */
+  overflow: hidden;
   z-index: 2;
-  /* Use the SAME animation as the blob to keep the mask synced */
   animation: morph 8s ease-in-out infinite;
 }
 
@@ -202,4 +207,7 @@ footer {
         transform: translateY(-50%) translateX(0px);
     }
 }
+
+
+
 
